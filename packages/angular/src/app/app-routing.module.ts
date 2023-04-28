@@ -9,8 +9,7 @@ import {
 } from './components';
 import { AuthGuardService } from './services';
 
-import { SideNavOuterToolbarComponent } from './layouts/side-nav-outer-toolbar/side-nav-outer-toolbar.component';
-import { UnauthenticatedContentComponent } from './layouts/unauthenticated-content/unauthenticated-content';
+import { SideNavOuterToolbarComponent, UnauthenticatedContentComponent } from './layouts';
 
 import { CrmContactListComponent } from './pages/crm-contact-list/crm-contact-list.component';
 import { CrmContactDetailsComponent } from './pages/crm-contact-details/crm-contact-details.component';
@@ -19,6 +18,10 @@ import { PlanningTaskDetailsComponent } from './pages/planning-task-details/plan
 import { AnalyticsDashboardComponent } from './pages/analytics-dashboard/analytics-dashboard.component';
 import { AnalyticsSalesReportComponent } from './pages/analytics-sales-report/analytics-sales-report.component';
 import { AnalyticsGeographyComponent } from './pages/analytics-geography/analytics-geography.component';
+import { AuthSignInComponent } from './pages/auth-sign-in/auth-sign-in.component';
+import { AuthCreateAccountComponent } from './pages/auth-create-account/auth-create-account.component';
+import { AuthResetPasswordComponent } from './pages/auth-reset-password/auth-reset-password.component';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 
 const routes: Routes = [
   {
@@ -89,6 +92,25 @@ const routes: Routes = [
         path: 'analytics-geography',
         component: AnalyticsGeographyComponent,
         canActivate: [AuthGuardService],
+      },
+      {
+        path: 'sign-in-form',
+        component: AuthSignInComponent,
+        canActivate: [AuthGuardService],
+      },
+      {
+        path: 'sign-up-form',
+        component: AuthCreateAccountComponent,
+        canActivate: [AuthGuardService],
+      },
+      {
+        path: 'reset-password-form',
+        component: AuthResetPasswordComponent,
+        canActivate: [AuthGuardService],
+      },
+      {
+        path: 'user-profile',
+        component: UserProfileComponent
       },
       {
         path: '**',

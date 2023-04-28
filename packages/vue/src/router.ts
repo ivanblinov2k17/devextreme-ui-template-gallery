@@ -5,7 +5,7 @@ import { authInfo } from '@/auth';
 
 function loadAuthComponent(ComponentFileName: string) {
   // eslint-disable-next-line func-call-spacing
-  return () => import (/* webpackChunkName: "auth" */ `@/components/${ComponentFileName}.vue`);
+  return () => import (/* webpackChunkName: "auth" */ `@/components/library/${ComponentFileName}.vue`);
 }
 
 export const router = createRouter({
@@ -23,11 +23,13 @@ export const router = createRouter({
         layout: simpleLayout,
         title: 'Sign In',
       },
+      props: { resetLink: '/reset-password', createAccountLink: '/create-account' },
       component: loadAuthComponent('login-form'),
     },
     {
       path: '/reset-password',
       name: 'reset-password',
+      props: { signInLink: '/login', buttonLink: '/login' },
       meta: {
         requiresAuth: false,
         layout: simpleLayout,
@@ -44,6 +46,7 @@ export const router = createRouter({
         layout: simpleLayout,
         title: 'Sign Up',
       },
+      props: { redirectLink: '/login', buttonLink: '/login' },
       component: loadAuthComponent('create-account-form'),
     },
     {
@@ -64,6 +67,10 @@ export const router = createRouter({
       'analytics-dashboard',
       'analytics-sales-report',
       'analytics-geography',
+      'sign-in-form',
+      'sign-up-form',
+      'reset-password-form',
+      'user-profile',
     ].map((name) => ({
       path: `/${name}`,
       meta: {
